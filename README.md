@@ -1,7 +1,5 @@
 # OWI Sample Project
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d9cb9f6e95a04455963045310743b4a9)](https://www.codacy.com/manual/ocarizr/OWI_sample?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ocarizr/OWI_sample&amp;utm_campaign=Badge_Grade)
-
 The repository contains a solution (sln) with two projects who can be opened at one using VS2019:
 -  A test Project,
 -  The project with the algorithm
