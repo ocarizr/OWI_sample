@@ -1,0 +1,20 @@
+# Enable C++ support
+language: cpp
+
+stages:
+  - format
+  - static analysis
+  - build
+  - address sanitizer
+  - thread sanitizer
+  - undefined behavior sanitizer
+
+jobs:
+  include:
+    - stage: format
+      dist: trusty
+      script: ./tools/run-clang-format.py -r src test
+    - stage: static analysis
+      dist: trusty
+      script: ./tools/tidy
+    - stage: build
