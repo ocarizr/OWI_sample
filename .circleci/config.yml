@@ -30,4 +30,4 @@ jobs:
           
       - run:
           name: Valgrind Test
-          command: 'valgrind --leak-check=full --show-leak-kinds=all ./owi_sample'
+          command: 'valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./owi_sample'
