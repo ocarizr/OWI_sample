@@ -14,7 +14,7 @@ jobs:
          
       - run:
           name: Installing GCC
-          command: 'sudo apt-get -y update && sudo apt-get -y install software-properties-common && sudo add-apt-repository ppa:ubuntu-toolchain-r/test && sudo apt-get -y install -y gcc g++ ldconfig libtool autoconf automake cmake gcc-8 g++-8'
+          command: 'sudo apt-get -y update && sudo apt-get -y install software-properties-common && sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && sudo apt-get -y install -y gcc g++ ldconfig libtool autoconf automake cmake gcc-8 g++-8'
          
       - run:
           name: Configure C++ version
