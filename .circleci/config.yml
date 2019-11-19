@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian:stretch
+
+    steps:
+      - checkout
+
+      - run:
+          name: install g++
+          command: apt -y install g++
+
+      - run:
+          name: build project
+          command: g++ ./OWI_Code_Sample/Main.cpp -Wall -g -o owi_sample
