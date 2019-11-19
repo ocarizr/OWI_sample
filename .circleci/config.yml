@@ -18,15 +18,15 @@ jobs:
           
       - run:
           name: Installing GCC
-          command: 'sudo apt-get update && sudo apt-get install -y gcc-7 g++-7'
+          command: 'sudo apt-get update && sudo apt-get install -y clang-7'
 
       - run:
           name: Check GCC version
-          command: 'gcc --version'
+          command: 'g++ --version'
           
       - run:
           name: Build project
-          command: 'gcc ./OWI_Code_Sample/Main.cpp -Wall -g -o owi_sample -lstdc++'
+          command: 'g++ ./OWI_Code_Sample/Main.cpp -Wall -g -o owi_sample -lstdc++'
 
       - run:
           name: Installing Valgrind
