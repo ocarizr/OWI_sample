@@ -1,5 +1,6 @@
 #pragma once
 #include <cctype>
+#include <string.h>
 #include <iostream>
 #include <optional>
 #include "position.h"
