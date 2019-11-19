@@ -15,14 +15,12 @@ public:
 	explicit board(std::string input) noexcept : m_size(0), m_board_arrangement()
 	{
 		std::vector<std::string> pieces_input;
-		size_t strmax = sizeof input.data();
-		char* next;
-		char* token = strtok(input.data(), ",", &next);
+		char* token = strtok(input.data(), ",");
 
 		while (token != nullptr)
 		{
 			pieces_input.push_back(token);
-			token = strtok(nullptr, ",", &next);
+			token = strtok(nullptr, ",");
 		}
 
 		auto amount_of_pieces = std::size(pieces_input);
