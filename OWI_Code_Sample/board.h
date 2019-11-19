@@ -17,12 +17,12 @@ public:
 		std::vector<std::string> pieces_input;
 		size_t strmax = sizeof input.data();
 		char* next;
-		char* token = strtok_s(input.data(), ",", &next);
+		char* token = strtok(input.data(), ",", &next);
 
 		while (token != nullptr)
 		{
 			pieces_input.push_back(token);
-			token = strtok_s(nullptr, ",", &next);
+			token = strtok(nullptr, ",", &next);
 		}
 
 		auto amount_of_pieces = std::size(pieces_input);
