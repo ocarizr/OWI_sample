@@ -27,7 +27,7 @@ jobs:
       - run:
           name: Installing Valgrind
           command: 'sudo apt-get update && sudo apt-get install -y valgrind \
-          && sudo wget ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2 \
+          && sudo wget sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2 \
           && tar -xjf valgrind-3.13.0.tar.bz2 && cd valgrind-3.13.0/ \
           && ./configure && make \
           && sudo make install \
