@@ -146,13 +146,12 @@ public:
 		if (!is_input_valid(input)) return result;
 
 		std::vector<std::string> pieces_input;
-		char* next;
-		char* token = strtok(input.data(), ",", &next);
+		char* token = strtok(input.data(), ",");
 
 		while (token != nullptr)
 		{
 			pieces_input.push_back(token);
-			token = strtok(nullptr, ",", &next);
+			token = strtok(nullptr, ",");
 		}
 
 		int slots = std::size(pieces_input);
