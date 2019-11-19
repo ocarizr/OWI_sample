@@ -14,15 +14,15 @@ jobs:
          
       - run:
           name: Installing GCC
-          command: 'sudo apt-get -y update && sudo apt-get -y install software-properties-common && sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && sudo apt-get -y update && sudo apt-get -y install -y gcc g++ libtool autoconf automake cmake gcc-8 g++-8'
+          command: 'sudo apt-get -y update && sudo apt-get -y install software-properties-common && sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && sudo apt-get -y update && sudo apt-get -y install -y gcc g++ libtool autoconf automake cmake gcc-9 g++-9'
          
       - run:
           name: Check C++ version
-          command: 'export CC=gcc-8 && export CXX=g++-8 && $CXX --version'
+          command: 'export CC=gcc-9 && export CXX=g++-9 && $CXX --version'
           
       - run:
           name: Build project
-          command: 'export CC=gcc-8 && export CXX=g++-8 && $CXX ./OWI_Code_Sample/Main.cpp -Wall -Wextra -O3 -g -fPIE -o owi_sample -std=c++17'
+          command: 'export CC=gcc-9 && export CXX=g++-9 && $CXX ./OWI_Code_Sample/Main.cpp -Wall -Wextra -O3 -g -fPIE -o owi_sample -std=c++17'
           
       - run:
           name: Installing Valgrind
@@ -32,10 +32,11 @@ jobs:
           && ./configure && make
           && sudo make install
           && sudo whereis valgrind
-          && sudo update-alternatives --install /usr/bin/valgrind valgrind /usr/local/bin/valgrind 1 --force
-          && ll /usr/bin/valgrind
-          && ll /etc/alternatives/valgrind
-          && valgrind --version'
+          && sudo update-alternatives --install /usr/bin/valgrind valgrind /usr/local/bin/valgrind 1 --force'
+          
+      - run:
+         name: Check Valgrind Version
+         command: 'valgrind --version'
           
       - run:
           name: Valgrind Test
