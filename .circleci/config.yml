@@ -40,4 +40,4 @@ jobs:
           
       - run:
           name: Valgrind Test
-          command: 'valgrind --help && valgrind --run-cxx-freeres=yes --leak-check=full --show-leak-kinds=all --errors-for-leak-kinds=all --error-exitcode=1 ./owi_sample'
+          command: 'valgrind --run-cxx-freeres=yes --leak-check=full --show-leak-kinds=all --errors-for-leak-kinds=all --error-exitcode=1 ./owi_sample'
