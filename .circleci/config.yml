@@ -10,7 +10,7 @@ jobs:
       only:
         - master
         
-    executor: win/vs2019
+    executor: 'win/vs2019'
 
     steps:
       - checkout
