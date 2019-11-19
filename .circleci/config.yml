@@ -26,20 +26,20 @@ jobs:
           
       - run:
           name: Installing Valgrind
-          command: 'sudo apt-get update && sudo apt-get install -y valgrind \'
-          '&& sudo wget ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2 \'
-          '&& tar -xjf valgrind-3.13.0.tar.bz2 && cd valgrind-3.13.0/ \'
-          '&& ./configure && make \'
-          '&& sudo make install \'
-          '&& sudo whereis valgrind \'
-valgrind: /usr/bin/valgrind.bin /usr/bin/valgrind /usr/lib/valgrind /usr/bin/X11/valgrind.bin /usr/bin/X11/valgrind /usr/local/bin/valgrind /usr/local/lib/valgrind /usr/include/valgrind /usr/share/man/man1/valgrind.1.gz \'
-          '&& sudo update-alternatives --install /usr/bin/valgrind valgrind /usr/local/bin/valgrind 1 --force
-update-alternatives: using /usr/local/bin/valgrind to provide /usr/bin/valgrind (valgrind) in auto mode \'
-          '&& ll /usr/bin/valgrind
-lrwxrwxrwx 1 root root 26 Sep  3 09:34 /usr/bin/valgrind -> /etc/alternatives/valgrind \'
-          '&& ll /etc/alternatives/valgrind
-lrwxrwxrwx 1 root root 23 Sep  3 09:34 /etc/alternatives/valgrind -> /usr/local/bin/valgrind \'
-          '&& valgrind --version'
+          command: 'sudo apt-get update && sudo apt-get install -y valgrind \
+          && sudo wget ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2 \
+          && tar -xjf valgrind-3.13.0.tar.bz2 && cd valgrind-3.13.0/ \
+          && ./configure && make \
+          && sudo make install \
+          && sudo whereis valgrind \
+valgrind: /usr/bin/valgrind.bin /usr/bin/valgrind /usr/lib/valgrind /usr/bin/X11/valgrind.bin /usr/bin/X11/valgrind /usr/local/bin/valgrind /usr/local/lib/valgrind /usr/include/valgrind /usr/share/man/man1/valgrind.1.gz \
+          && sudo update-alternatives --install /usr/bin/valgrind valgrind /usr/local/bin/valgrind 1 --force \
+update-alternatives: using /usr/local/bin/valgrind to provide /usr/bin/valgrind (valgrind) in auto mode \
+          && ll /usr/bin/valgrind
+lrwxrwxrwx 1 root root 26 Sep  3 09:34 /usr/bin/valgrind -> /etc/alternatives/valgrind \
+          && ll /etc/alternatives/valgrind \
+lrwxrwxrwx 1 root root 23 Sep  3 09:34 /etc/alternatives/valgrind -> /usr/local/bin/valgrind \
+          && valgrind --version'
           
       - run:
           name: Valgrind Test
