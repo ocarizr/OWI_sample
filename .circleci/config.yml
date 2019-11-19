@@ -17,7 +17,7 @@ jobs:
 
       - run:
           name: Build project
-          command: 'gcc ./OWI_Code_Sample/Main.cpp -Wall -g -o owi_sample -lstdc++ -std=gnu++17'
+          command: 'g++ ./OWI_Code_Sample/Main.cpp -Wall -g -o owi_sample -std=c++1z'
 
       - run:
           name: Installing Valgrind
