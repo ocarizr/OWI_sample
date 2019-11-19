@@ -25,7 +25,7 @@ class piece
 
 public:
 	piece() noexcept = default;
-	piece(std::string input, position pos) noexcept : m_left(input[0]), m_top(input[1]), m_bottom(input[2]), m_right(input[3]) {}
+	explicit piece(std::string input) noexcept : m_left(input[0]), m_top(input[1]), m_bottom(input[2]), m_right(input[3]) {}
 	piece(const piece& source) noexcept : m_left(source.m_left), m_top(source.m_top), m_bottom(source.m_bottom), m_right(source.m_right) {}
 	piece(piece&& source) noexcept : m_left(source.m_left), m_top(source.m_top), m_bottom(source.m_bottom), m_right(source.m_right) {}
 
