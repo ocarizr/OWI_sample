@@ -1,6 +1,11 @@
 version: 2
+
 jobs:
-  build:       
+  build:
+    branches:
+      only:
+        - master
+        
     docker:
       - image: debian:stretch
       
@@ -26,10 +31,3 @@ jobs:
       - run:
           name: Valgrind Test
           command: 'valgrind ./owi_sample'
-      
-workflows:
-  version: 2
-  
-  build:
-    jobs:
-      - build
