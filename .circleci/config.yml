@@ -15,19 +15,23 @@ jobs:
       - run:
           name: Installing SUDO
           command: 'apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*'
-          
+         
       - run:
           name: Installing GCC
+          command: 'sudo apt-get update && sudo apt-get install -y gcc g++'
+         
+      - run:
+          name: Installing Clang-7
           command: 'sudo apt-get update && sudo apt-get install -y clang-7'
 
       - run:
-          name: Check GCC version
+          name: Check G++ version
           command: 'g++ --version'
           
       - run:
           name: Build project
-          command: 'g++ ./OWI_Code_Sample/Main.cpp -Wall -g -o owi_sample -lstdc++'
-
+          command: 'g++ ./OWI_Code_Sample/Main.cpp -Wall -g -o owi_sample -std=c++17'
+          
       - run:
           name: Installing Valgrind
           command: 'apt-get update && apt-get install -y valgrind'
