@@ -17,16 +17,12 @@ jobs:
           command: 'sudo apt-get -y update && sudo apt-get -y install software-properties-common && sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && sudo apt-get -y update && sudo apt-get -y install -y gcc g++ libtool autoconf automake cmake gcc-8 g++-8'
          
       - run:
-          name: Configure C++ version
-          command: 'export CC=gcc-7 && export CXX=g++-7'
-         
-      - run:
-          name: Check G++ version
-          command: 'g++ --version'
+          name: Check C++ version
+          command: 'export CC=gcc-8 && export CXX=g++-8 && $CXX --version'
           
       - run:
           name: Build project
-          command: 'g++ ./OWI_Code_Sample/Main.cpp -Wall -g -o owi_sample -std=c++17'
+          command: 'export CC=gcc-8 && export CXX=g++-8 && $CXX ./OWI_Code_Sample/Main.cpp -Wall -Wextra -O0 -g -fPIE -o owi_sample -std=c++17'
           
       - run:
           name: Installing Valgrind
