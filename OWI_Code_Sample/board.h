@@ -33,8 +33,7 @@ public:
 			int horizontal = i % m_size;
 			int vertical = i / m_size;
 
-			position pos(vertical, horizontal);
-			piece pc(pieces_input[i], pos);
+			piece pc(pieces_input[i]);
 			m_board_arrangement[vertical].push_back(pc);
 		}
 	}
