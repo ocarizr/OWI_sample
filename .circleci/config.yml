@@ -22,7 +22,7 @@ jobs:
           
       - run:
           name: Build project
-          command: 'export CC=gcc-8 && export CXX=g++-8 && $CXX ./OWI_Code_Sample/Main.cpp -Wall -Wextra -O0 -g -fPIE -o owi_sample -std=c++17'
+          command: 'export CC=gcc-8 && export CXX=g++-8 && $CXX ./OWI_Code_Sample/Main.cpp -Wall -Wextra -O3 -g -fPIE -o owi_sample -std=c++17'
           
       - run:
           name: Installing Valgrind
