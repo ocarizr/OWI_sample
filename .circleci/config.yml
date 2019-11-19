@@ -1,29 +1,28 @@
-version: 2.1
-
-jobs:        
-    machine:
-      image: ubuntu-1604:201903-01
-      docker_layer_caching: true
-
+version: 2
+jobs:
+  build:
+    branches:
+      only:
+        - master
+        
+    docker:
+      - image: debian:stretch
+      
     steps:
       - checkout
-
+      
+      - run:
+          name: Installing SUDO
+          command: 'apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*'
+          
       - run:
           name: Installing GCC
-          command: 'sudo apt-get update && sudo apt-get install -y gcc g++'
+          command: 'apt-get update && apt-get install -y gcc g++'
 
-      - run:
-          name: Installing Build Essential
-          command: 'sudo apt-get update && sudo apt-get install -y build-essential'
-
-      - run:
-          name: Check GCC version
-          command: 'gcc --version'
-          
       - run:
           name: Build project
-          command: 'gcc ./OWI_Code_Sample/Main.cpp -Wall -g -o owi_sample -lstdc++ -std=c++17'
-          
+          command: 'gcc ./OWI_Code_Sample/Main.cpp -Wall -g -o owi_sample -lstdc++'
+
       - run:
           name: Installing Valgrind
           command: 'apt-get update && apt-get install -y valgrind'
@@ -34,6 +33,7 @@ jobs:
       
 workflows:
   version: 2
+  
   build:
     jobs:
       - build
