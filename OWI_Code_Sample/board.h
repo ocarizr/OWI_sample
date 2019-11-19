@@ -30,7 +30,6 @@ public:
 
 		for (int i = 0; i < amount_of_pieces; ++i)
 		{
-			int horizontal = i % m_size;
 			int vertical = i / m_size;
 
 			piece pc(pieces_input[i]);
@@ -46,9 +45,7 @@ public:
 
 		for (size_t i = 0; i < amount_of_pieces; ++i)
 		{
-			int horizontal = i % m_size;
 			int vertical = i / m_size;
-
 			m_board_arrangement[vertical].push_back(pieces[i]);
 		}
 	}
