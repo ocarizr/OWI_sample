@@ -83,7 +83,7 @@ public:
 	std::string to_string() const noexcept
 	{
 		char buffer[5];
-		sprintf_s(buffer, "%c%c%c%c", m_left, m_top, m_bottom, m_right);
+		sprintf(buffer, "%c%c%c%c", m_left, m_top, m_bottom, m_right);
 
 		return buffer;
 	}
