@@ -7,8 +7,8 @@ class position
 public:
 	position() = default;
 	position(int vertical, int horizontal) noexcept : m_horizontal(horizontal), m_vertical(vertical) {}
-	position(const position& source) = default;
-	position(position&& source) = default;
+	position(const position& source) noexcept = default;
+	position(position&& source) noexcept = default;
 
 	position& operator =(const position& source) noexcept
 	{
@@ -45,15 +45,15 @@ public:
 		return m_horizontal != other.m_horizontal || m_vertical != other.m_vertical;
 	}
 
-	static position get_upper(const position& pos) noexcept
+	static position get_upper(int& vertical, int& horizontal) noexcept
 	{
-		position res(pos.m_vertical - 1, pos.m_horizontal);
+		position res(vertical - 1, horizontal);
 		return res;
 	}
 
-	static position get_left(const position& pos) noexcept
+	static position get_left(int& vertical, int& horizontal) noexcept
 	{
-		position res(pos.m_vertical, pos.m_horizontal - 1);
+		position res(vertical, horizontal - 1);
 		return res;
 	}
 };

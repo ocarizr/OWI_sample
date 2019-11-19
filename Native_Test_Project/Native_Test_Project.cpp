@@ -27,7 +27,6 @@ namespace NativeTestProject
 
 			piece pc(input, pos);
 
-			Assert::IsTrue(pc.get_position() == pos);
 			Assert::AreEqual(pc.get_left(), input[0]);
 			Assert::AreEqual(pc.get_top(), input[1]);
 			Assert::AreEqual(pc.get_bottom(), input[2]);
@@ -42,7 +41,6 @@ namespace NativeTestProject
 			piece pc(input, pos);
 			piece other_piece(pc);
 
-			Assert::IsTrue(other_piece.get_position() == pos);
 			Assert::AreEqual(other_piece.get_left(), input[0]);
 			Assert::AreEqual(other_piece.get_top(), input[1]);
 			Assert::AreEqual(other_piece.get_bottom(), input[2]);
@@ -51,7 +49,6 @@ namespace NativeTestProject
 			piece another_piece;
 			another_piece = pc;
 
-			Assert::IsTrue(another_piece.get_position() == pos);
 			Assert::AreEqual(another_piece.get_left(), input[0]);
 			Assert::AreEqual(another_piece.get_top(), input[1]);
 			Assert::AreEqual(another_piece.get_bottom(), input[2]);
@@ -72,8 +69,6 @@ namespace NativeTestProject
 			piece pc(input, pos);
 
 			Assert::IsTrue(pc.check_left_and_top_connections(left, top));
-
-			pc.get_position().change(1, 1);
 
 			{
 				pos.change(0, 1);
@@ -154,10 +149,10 @@ namespace NativeTestProject
 
 		TEST_METHOD(get_side_positions)
 		{
-			position pos(2, 2);
+			int cell = 2;
 
-			position left = position::get_left(pos);
-			position upper = position::get_upper(pos);
+			position left = position::get_left(cell, cell);
+			position upper = position::get_upper(cell, cell);
 
 			Assert::AreEqual(2, left.get_vertical());
 			Assert::AreEqual(1, left.get_horizontal());
@@ -254,7 +249,6 @@ namespace NativeTestProject
 		{
 			Assert::AreEqual(49, puzzle_solver::get_amount_of_solutions("cBAA,acaa,AbAb,cabb,BABA,aaac,aBaB,bbaa,AAbb"));
 		}
-
 		TEST_METHOD(obtained_correct_solutions)
 		{
 			auto solution = puzzle_solver::get_all_solutions("aaaa,AAAA,aaaa,AAAA");

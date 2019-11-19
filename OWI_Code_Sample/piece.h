@@ -6,8 +6,6 @@
 
 class piece
 {
-	position m_position;
-
 	char m_left;
 	char m_top;
 	char m_bottom;
@@ -26,13 +24,12 @@ class piece
 
 public:
 	piece() noexcept = default;
-	piece(std::string input, position pos) noexcept : m_position(pos), m_left(input[0]), m_top(input[1]), m_bottom(input[2]), m_right(input[3]) {}
-	piece(const piece& source) noexcept : m_position(source.m_position), m_left(source.m_left), m_top(source.m_top), m_bottom(source.m_bottom), m_right(source.m_right) {}
-	piece(piece&& source) noexcept : m_position(source.m_position), m_left(source.m_left), m_top(source.m_top), m_bottom(source.m_bottom), m_right(source.m_right) {}
+	piece(std::string input, position pos) noexcept : m_left(input[0]), m_top(input[1]), m_bottom(input[2]), m_right(input[3]) {}
+	piece(const piece& source) noexcept : m_left(source.m_left), m_top(source.m_top), m_bottom(source.m_bottom), m_right(source.m_right) {}
+	piece(piece&& source) noexcept : m_left(source.m_left), m_top(source.m_top), m_bottom(source.m_bottom), m_right(source.m_right) {}
 
 	piece& operator =(const piece& source) noexcept
 	{
-		m_position = source.m_position;
 		m_left = source.m_left;
 		m_top = source.m_top;
 		m_bottom = source.m_bottom;
@@ -43,7 +40,6 @@ public:
 
 	piece& operator =(piece&& source) noexcept
 	{
-		m_position = std::move(source.m_position);
 		m_left = source.m_left;
 		m_top = source.m_top;
 		m_bottom = source.m_bottom;
@@ -52,7 +48,6 @@ public:
 		return *this;
 	}
 
-	position get_position() const noexcept { return m_position; }
 	char get_left() const noexcept { return m_left; }
 	char get_top() const noexcept { return m_top; }
 	char get_bottom() const noexcept { return m_bottom; }
@@ -95,8 +90,7 @@ public:
 
 	bool operator ==(const piece& other) const noexcept
 	{
-		return m_position == other.m_position &&
-			m_left == other.m_left &&
+		return m_left == other.m_left &&
 			m_top == other.m_top &&
 			m_bottom == other.m_bottom &&
 			m_right == other.m_right;
@@ -104,8 +98,7 @@ public:
 
 	bool operator !=(const piece& other) const noexcept
 	{
-		return m_position != other.m_position ||
-			m_left != other.m_left ||
+		return m_left != other.m_left ||
 			m_top != other.m_top ||
 			m_bottom != other.m_bottom ||
 			m_right != other.m_right;

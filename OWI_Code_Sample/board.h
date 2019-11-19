@@ -11,8 +11,8 @@ class board
 	matrix m_board_arrangement;
 
 public:
-	board() = default;
-	explicit board(std::string input) noexcept :m_size(0), m_board_arrangement()
+	board() noexcept = default;
+	explicit board(std::string input) noexcept : m_size(0), m_board_arrangement()
 	{
 		std::vector<std::string> pieces_input;
 		size_t strmax = sizeof input.data();
@@ -52,7 +52,6 @@ public:
 			int horizontal = i % m_size;
 			int vertical = i / m_size;
 
-			pieces[i].get_position().change(vertical, horizontal);
 			m_board_arrangement[vertical].push_back(pieces[i]);
 		}
 	}
@@ -86,7 +85,7 @@ public:
 		return (pos.get_horizontal() >= 0 && pos.get_horizontal() < m_size) && (pos.get_vertical() >= 0 && pos.get_vertical() < m_size);
 	}
 
-	std::optional<piece> get_piece_from(position& pos)
+	std::optional<piece> get_piece_from(position& pos) noexcept
 	{
 		std::optional<piece> result;
 		if (is_inside(pos))
