@@ -1,23 +1,40 @@
 version: 2.1
 
-orbs:
-  win: circleci/windows@1.0.0
-
 jobs:
   build:
-  
-  branches:
+    branches:
       only:
         - master
         
-    executor: 'win/vs2019'
+    machine:
+      - image: ubuntu-1604:201903-01
 
     steps:
       - checkout
 
       - run:
-          name: Building VS Project
-          command: 'msbuild OWI_Code_Sample.sln -O3'
+          name: Installing GCC
+          command: 'apt-get update && apt-get install -y gcc g++'
+          command: 'sudo apt-get update && sudo apt-get install -y gcc g++'
+
+      - run:
+          name: Installing Build Essential
+          command: 'apt-get update && apt-get install -y build-essential'
+          command: 'sudo apt-get update && sudo apt-get install -y build-essential'
+
+      - run:
+          name: Check GCC version
+          command: 'gcc --version'
+          
+      - run:
+          name: Build project
+          command: 'gcc ./OWI_Code_Sample/Main.cpp -Wall -g -o owi_sample -lstdc++ -std=c++17'
+      - run:
+          name: Installing Valgrind
+          command: 'apt-get update && apt-get install -y valgrind'
+      - run:
+          name: Valgrind Test
+          command: 'valgrind ./owi_sample'
       
 workflows:
   version: 2
