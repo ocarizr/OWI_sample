@@ -26,7 +26,7 @@ jobs:
           
       - run:
           name: Installing Valgrind
-          command: 'apt-get update && apt-get install -y valgrind'
+          command: 'sudo apt-get update && sudo apt-get install -y valgrind'
           
       - run:
           name: Valgrind Test
