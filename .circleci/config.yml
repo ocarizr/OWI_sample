@@ -14,7 +14,8 @@ jobs:
          
       - run:
           name: Installing GCC
-          command: 'sudo apt-get update && sudo apt-get install -y gcc-7 g++-7'
+          command: 'sudo apt-get -y update && sudo apt-get -y install software-properties-common && \
+          add-apt-repository ppa:ubuntu-toolchain-r/test && sudo apt-get -y install -y gcc g++ ldconfig libtool autoconf automake cmake gcc-8 g++-8'
          
       - run:
           name: Configure C++ version
