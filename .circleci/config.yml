@@ -8,12 +8,13 @@ jobs:
       - checkout
 
       - run:
-          name: install g++
-          command: apt -y install g++
+          name: Build project
+          command: gcc ./OWI_Code_Sample/Main.cpp -Wall -g -o owi_sample -lstdc++ -std=gnu++17
 
       - run:
-          name: build project
-          command: gcc-6-base ./OWI_Code_Sample/Main.cpp -Wall -g -o owi_sample -lstdc++ -std=gnu++17
+          name: Valgrind Test
+          command: valgrind ./owi_sample
+      
 workflows:
   version: 2
   build:
