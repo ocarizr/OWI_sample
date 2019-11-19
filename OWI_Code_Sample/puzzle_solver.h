@@ -8,6 +8,26 @@
 
 class puzzle_solver
 {
+	static bool check_if_solution(board& table) noexcept
+	{
+		bool result = true;
+		for (int i = 0; i < table.get_size() && result; ++i)
+		{
+			for (int j = 0; j < table.get_size() && result; ++j)
+			{
+				auto upper = position::get_upper(i, j);
+				auto left = position::get_left(i, j);
+
+				auto upper_piece = table.get_piece_from(upper);
+				auto left_piece = table.get_piece_from(left);
+
+				if (!table.get_board_arrangement()[i][j].check_left_and_top_connections(left_piece, upper_piece)) result = false;
+			}
+		}
+
+		return result;
+	}
+	
 	static void iterate_through_possibilities(const int& slots, std::vector<piece>& pieces_input, std::set<std::string>& result) noexcept
 	{
 		int side_size = sqrt(std::size(pieces_input));
@@ -64,9 +84,9 @@ public:
 
 		if (input.empty()) result = false;
 		
+		std::vector<std::string> pieces_input;
 		if (result)
 		{
-			std::vector<std::string> pieces_input;
 			char* token = strtok(input.data(), ",");
 
 			while (token != nullptr)
