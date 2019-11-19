@@ -157,12 +157,7 @@ public:
 
 		for (size_t i = 0; i < std::size(pieces_input); ++i)
 		{
-			int size = sqrt(std::size(pieces_input));
-			int horizontal = i % size;
-			int vertical = i / size;
-
-			position pos(vertical, horizontal);
-			piece pc(pieces_input[i], pos);
+			piece pc(pieces_input[i]);
 			pieces[i] = pc;
 		}
 
