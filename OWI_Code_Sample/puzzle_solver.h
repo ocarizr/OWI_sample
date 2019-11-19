@@ -85,13 +85,12 @@ public:
 		if (input.empty()) throw false;
 
 		std::vector<std::string> pieces_input;
-		char* next;
-		char* token = strtok(input.data(), ",", &next);
+		char* token = strtok(input.data(), ",");
 
 		while (token != nullptr)
 		{
 			pieces_input.push_back(token);
-			token = strtok(nullptr, ",", &next);
+			token = strtok(nullptr, ",");
 		}
 		double sqr = sqrt(std::size(pieces_input));
 
