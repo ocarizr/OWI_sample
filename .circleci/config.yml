@@ -1,13 +1,33 @@
-version: 2.1
-
-orbs:
-  win: circleci/windows@1.0.0
+version: 2
 
 jobs:
-  build:   
-    executor: win/vs2019
-    
+  build:
+    branches:
+      only:
+        - master
+        
+    machine:
+      image: ubuntu-1604:201903-01
+      
     steps:
       - checkout
-      - run: 'msbuild ./OWI_Code_Sample/OWI_Code_Sample.vcxproj /p:configuration=debug /std:c++latest'
-
+         
+      - run:
+          name: Installing GCC
+          command: 'sudo apt-get -y update && sudo apt-get -y install software-properties-common && sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && sudo apt-get -y update && sudo apt-get -y install -y gcc g++ libtool autoconf automake cmake gcc-8 g++-8'
+         
+      - run:
+          name: Check C++ version
+          command: 'export CC=gcc-8 && export CXX=g++-8 && $CXX --version'
+          
+      - run:
+          name: Build project
+          command: 'export CC=gcc-8 && export CXX=g++-8 && $CXX ./OWI_Code_Sample/Main.cpp -Wall -Wextra -O0 -g -fPIE -o owi_sample -std=c++17'
+          
+      - run:
+          name: Installing Valgrind
+          command: 'apt-get update && apt-get install -y valgrind'
+          
+      - run:
+          name: Valgrind Test
+          command: 'valgrind ./owi_sample'
