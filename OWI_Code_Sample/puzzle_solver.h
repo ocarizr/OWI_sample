@@ -85,14 +85,13 @@ public:
 		if (input.empty()) throw false;
 
 		std::vector<std::string> pieces_input;
-		size_t strmax = sizeof input.data();
 		char* next;
-		char* token = strtok_s(input.data(), ",", &next);
+		char* token = strtok(input.data(), ",", &next);
 
 		while (token != nullptr)
 		{
 			pieces_input.push_back(token);
-			token = strtok_s(nullptr, ",", &next);
+			token = strtok(nullptr, ",", &next);
 		}
 		double sqr = sqrt(std::size(pieces_input));
 
@@ -148,14 +147,13 @@ public:
 		if (!is_input_valid(input)) return result;
 
 		std::vector<std::string> pieces_input;
-		size_t strmax = sizeof input.data();
 		char* next;
-		char* token = strtok_s(input.data(), ",", &next);
+		char* token = strtok(input.data(), ",", &next);
 
 		while (token != nullptr)
 		{
 			pieces_input.push_back(token);
-			token = strtok_s(nullptr, ",", &next);
+			token = strtok(nullptr, ",", &next);
 		}
 
 		int slots = std::size(pieces_input);
