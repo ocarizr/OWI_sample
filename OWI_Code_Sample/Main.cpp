@@ -5,7 +5,7 @@
 
 int main()
 {
-	std::string input = "aaaa,AAAA,aaaa,AAAA";
+	std::string input = "aaaa,AAAA,AAAA,aaaa";
 	auto is_solution = puzzle_solver::check_if_solution(input);
 	int amount_of_solutions = 0;
 	std::set<std::string> all_solutions;
@@ -21,14 +21,14 @@ int main()
 	}
 
 	std::cout << input << (is_solution ? " is" : " isn't") << " a solution for the puzzle." << std::endl;
-	std::cout << input << "input has " << amount_of_solutions << (amount_of_solutions > 1 ? "solutions" : "solution") << std::endl;
+	std::cout << input << "input has " << amount_of_solutions << (amount_of_solutions > 1 ? " solutions" : " solution") << std::endl;
 
-	std::cout << "The " << amount_of_solutions << (amount_of_solutions > 1 ? "solutions" : "solution") << " of " << input
-		<< amount_of_solutions << (amount_of_solutions > 1 ? "are:" : "is:") << std::endl;
+	std::cout << "The " << amount_of_solutions << (amount_of_solutions > 1 ? " solutions " : " solution ") << " of " << input
+		<< amount_of_solutions << (amount_of_solutions > 1 ? " are:" : " is:") << std::endl;
 	std::for_each(std::cbegin(all_solutions), std::cend(all_solutions),
 		[](const std::string& solution)
 		{
-			std::cout << solution << "/n";
+			std::cout << solution << "\n";
 		});
 
 	return 0;
