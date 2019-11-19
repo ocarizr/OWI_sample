@@ -6,8 +6,8 @@ jobs:
       only:
         - master
         
-    docker:
-      - image: debian:stretch
+    machine:
+      image: ubuntu-1604:201903-01
       
     steps:
       - checkout
