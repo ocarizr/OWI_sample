@@ -34,7 +34,7 @@ jobs:
           && sudo whereis valgrind \
 valgrind: /usr/bin/valgrind.bin /usr/bin/valgrind /usr/lib/valgrind /usr/bin/X11/valgrind.bin /usr/bin/X11/valgrind /usr/local/bin/valgrind /usr/local/lib/valgrind /usr/include/valgrind /usr/share/man/man1/valgrind.1.gz \
           && sudo update-alternatives --install /usr/bin/valgrind valgrind /usr/local/bin/valgrind 1 --force \
-update-alternatives: using /usr/local/bin/valgrind to provide /usr/bin/valgrind (valgrind) in auto mode \
+update-alternatives: using /usr/local/bin/valgrind to provide /usr/bin/valgrind in auto mode \
           && ll /usr/bin/valgrind
 lrwxrwxrwx 1 root root 26 Sep  3 09:34 /usr/bin/valgrind -> /etc/alternatives/valgrind \
           && ll /etc/alternatives/valgrind \
