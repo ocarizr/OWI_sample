@@ -18,8 +18,12 @@ jobs:
           
       - run:
           name: Installing GCC
-          command: 'apt-get update && apt-get install -y gcc g++'
+          command: 'apt-get update && apt-get install -y gcc-7 g++'
 
+      - run:
+          name: Check GCC version
+          command: 'gcc --version'
+          
       - run:
           name: Build project
           command: 'gcc ./OWI_Code_Sample/Main.cpp -Wall -g -o owi_sample -lstdc++'
