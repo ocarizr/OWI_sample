@@ -23,9 +23,8 @@ namespace NativeTestProject
 		TEST_METHOD(is_piece_constructor_working)
 		{
 			std::string input = "aBcD";
-			position pos(0, 0);
 
-			piece pc(input, pos);
+			piece pc(input);
 
 			Assert::AreEqual(pc.get_left(), input[0]);
 			Assert::AreEqual(pc.get_top(), input[1]);
@@ -36,9 +35,8 @@ namespace NativeTestProject
 		TEST_METHOD(is_piece_copy_working)
 		{
 			std::string input = "aBcD";
-			position pos(0, 0);
 
-			piece pc(input, pos);
+			piece pc(input);
 			piece other_piece(pc);
 
 			Assert::AreEqual(other_piece.get_left(), input[0]);
@@ -64,21 +62,18 @@ namespace NativeTestProject
 			std::optional<piece> left, top;
 
 			std::string input = "aBcD";
-			position pos(0, 0);
 
-			piece pc(input, pos);
+			piece pc(input);
 
 			Assert::IsTrue(pc.check_left_and_top_connections(left, top));
 
 			{
-				pos.change(0, 1);
-				piece other("dCba", pos);
+				piece other("dCba");
 				top.emplace(other);
 			}
 
 			{
-				pos.change(1, 0);
-				piece other("cBDA", pos);
+				piece other("cBDA");
 				left.emplace(other);
 			}
 
@@ -86,7 +81,7 @@ namespace NativeTestProject
 
 			{
 				left.reset();
-				piece other("cBDa", pos);
+				piece other("cBDa");
 				left.emplace(other);
 			}
 
@@ -98,7 +93,7 @@ namespace NativeTestProject
 			std::string input = "aBcD";
 			position pos(0, 0);
 
-			piece pc(input, pos);
+			piece pc(input);
 
 			Assert::AreEqual(pc.to_string(), input);
 		}
@@ -176,8 +171,7 @@ namespace NativeTestProject
 				int horizontal = i % 2;
 				int vertical = i / 2;
 
-				position pos(vertical, horizontal);
-				piece pc(piece_input[i], pos);
+				piece pc(piece_input[i]);
 				sample[vertical].push_back(pc);
 			}
 

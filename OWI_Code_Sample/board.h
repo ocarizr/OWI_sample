@@ -1,6 +1,7 @@
 #pragma once
 #include <sstream>
 #include "piece.h"
+#include "position.h"
 #include "custom_comparison.h"
 
 using matrix = std::vector<std::vector<piece>>;
@@ -24,7 +25,7 @@ public:
 		}
 
 		auto amount_of_pieces = std::size(pieces_input);
-		m_size = sqrt(amount_of_pieces);
+		m_size = static_cast<int>(sqrt(amount_of_pieces));
 
 		m_board_arrangement.resize(m_size);
 

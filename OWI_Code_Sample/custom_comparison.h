@@ -3,27 +3,18 @@ class custom_comparison
 {
 public:
 	template <typename T>
-	static bool compare_matrix(T source_matrix, T other_matrix)
+	static bool compare_matrix(T source_matrix, T other_matrix) noexcept
 	{
-		try
+		bool result = true;
+		for (size_t i = 0; i < std::size(source_matrix) && result; ++i)
 		{
-			for (size_t i = 0; i < std::size(source_matrix); ++i)
+			for (size_t j = 0; j < std::size(source_matrix[i]) && result; ++j)
 			{
-				for (size_t j = 0; j < std::size(source_matrix[i]); ++j)
-				{
-					if (source_matrix[i][j] != other_matrix[i][j])
-					{
-						throw false;
-					}
-				}
+				result = (source_matrix[i][j] == other_matrix[i][j]);
 			}
+		}
 
-			return true;
-		}
-		catch (bool error)
-		{
-			return error;
-		}
+		return result;
 	}
 };
 

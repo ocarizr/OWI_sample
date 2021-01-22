@@ -21,10 +21,10 @@ int main()
 	}
 
 	std::cout << input << (is_solution ? " is" : " isn't") << " a solution for the puzzle." << std::endl;
-	std::cout << input << "input has " << amount_of_solutions << (amount_of_solutions > 1 ? " solutions" : " solution") << std::endl;
+	std::cout << input << " input has " << amount_of_solutions << (amount_of_solutions > 1 ? " solutions" : " solution") << std::endl;
 
 	std::cout << "The " << amount_of_solutions << (amount_of_solutions > 1 ? " solutions " : " solution ") << " of " << input
-		<< amount_of_solutions << (amount_of_solutions > 1 ? " are:" : " is:") << std::endl;
+		<< (amount_of_solutions > 1 ? " are:" : " is:") << std::endl;
 	std::for_each(std::cbegin(all_solutions), std::cend(all_solutions),
 		[](const std::string& solution)
 		{
